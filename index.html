@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<title>Untitled</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap");
+  
+  body {
+    background-color: #0082c8;
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 30px;
+    word-wrap: anywhere;
+    font-family: "Noto Serif SC";
+  }
+  
+  #map {
+    position: absolute;
+    height: 1000px;
+    width: 1000px;
+  }
+</style>
+	</head>
+	<body>
+		  <div id="map"></div>
+    
+  <script>
+// this is where we'll write all our JavaScript code
+// remember, instead of using the default / && \ characters found on our keyboard
+// we'll be using these special unicode characters: ／ && ＼
+  
+  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*10);
+  const mapWidth = Math.round(((Math.random()*0.5)+0.5)*10);
+  
+  console.log(mapHeight);
+  console.log(mapWidth);
+  
+  const map = c => document.getElementById('map').innerText += c;
+  
+  for (let row = 0; row <= mapHeight; row++) {
+    for (let column = 0; column <= mapWidth; column++) {
+      console.log(row, column);
+      if (row === 0) {
+        if (column === mapWidth) {
+          map('■\n');
+        }
+        else {
+          map('■')
+        }
+      } else if (row === mapHeight){
+        map('■')
+      } else {
+        if (column === 0) {
+          map('■');
+        } else if (column === mapWidth) {
+          map('■\n');
+        } else {
+          map('░')
+        }
+      }
+    }
+  }
+</script>
+	</body>
+</html>
+
+
+
