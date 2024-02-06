@@ -17,15 +17,15 @@
   
   .container {
     position: absolute;
-    height: 500px;
-    width: 500px;
+    height: 10000px;
+    width: 10000px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   
   #mapContainer {
     border: solid 2px white;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
   
   #map {
@@ -37,7 +37,6 @@
   
   #player {
     position: absolute;
-    z-index: 1;
     color: #c76ebc;
     background-color: #1c1c36;
     padding: 5px 10px 15px; 
@@ -47,14 +46,18 @@
     transform: translate(-50%, -50%);
   }
 
+  #playerContainer {
+    z-index: 1;
+  }
   
   
   
 </style>
 	</head>
 	<body>
-  
-  <div id="player"> ◕◞ ◕ </div>
+  <div class="container" id="playerContainer">
+    <div id="player"> ◕◞ ◕ </div>
+    </div>
   <div class="container" id="mapContainer">
     <div id="map"></div>
     </div>
@@ -66,9 +69,9 @@
 // remember, instead of using the default / && \ characters found on our keyboard
 // we'll be using these special unicode characters: ／ && ＼
   
-  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*5);
-  const mapWidth = Math.round(((Math.random()*0.5)+0.5)*5);
-  
+  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*50);
+  const mapWidth = Math.round(((Math.random()*0.5)+0.5)*50);
+
   console.log(mapHeight);
   console.log(mapWidth);
   
