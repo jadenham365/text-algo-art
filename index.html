@@ -2,12 +2,12 @@
 <html lang="en-US">
 	<head>
 		<meta charset="utf-8">
-		<title>Untitled</title>
+		<title>NetNet's Adventure</title>
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap");
   
   body {
-    background-color: #0082c8;
+    background-color: #1c1c36;
     color: #ffffff;
     font-size: 30px;
     line-height: 30px;
@@ -15,23 +15,59 @@
     font-family: "Noto Serif SC";
   }
   
+  .container {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+  }
+  
+  #mapContainer {
+    border: solid 2px white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
   #map {
     position: absolute;
-    height: 1000px;
-    width: 1000px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
+  
+  #player {
+    position: absolute;
+    z-index: 1;
+    color: #c76ebc;
+    background-color: #1c1c36;
+    padding: 5px 10px 15px; 
+    border-radius: 25% / 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  
+  
+  
 </style>
 	</head>
 	<body>
-		  <div id="map"></div>
+  
+  <div id="player"> ◕◞ ◕ </div>
+  <div class="container" id="mapContainer">
+    <div id="map"></div>
+    </div>
+  
+		  
     
   <script>
 // this is where we'll write all our JavaScript code
 // remember, instead of using the default / && \ characters found on our keyboard
 // we'll be using these special unicode characters: ／ && ＼
   
-  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*10);
-  const mapWidth = Math.round(((Math.random()*0.5)+0.5)*10);
+  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*5);
+  const mapWidth = Math.round(((Math.random()*0.5)+0.5)*5);
   
   console.log(mapHeight);
   console.log(mapWidth);
@@ -56,7 +92,7 @@
         } else if (column === mapWidth) {
           map('■\n');
         } else {
-          map('░')
+          map('▓')
         }
       }
     }
