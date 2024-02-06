@@ -69,17 +69,13 @@
 // remember, instead of using the default / && \ characters found on our keyboard
 // we'll be using these special unicode characters: ／ && ＼
   
-  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*50);
-  const mapWidth = Math.round(((Math.random()*0.5)+0.5)*50);
-
-  console.log(mapHeight);
-  console.log(mapWidth);
+  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*20);
+  const mapWidth = Math.round(((Math.random()*0.5)+0.5)*20);
   
   const map = c => document.getElementById('map').innerText += c;
   
   for (let row = 0; row <= mapHeight; row++) {
     for (let column = 0; column <= mapWidth; column++) {
-      console.log(row, column);
       if (row === 0) {
         if (column === mapWidth) {
           map('■\n');
@@ -100,6 +96,10 @@
       }
     }
   }
+    
+  let direction = addEventListener.keyDown;
+  console.log(direction);
+  
 </script>
 	</body>
 </html>
