@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>NetNet's Adventure</title>
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap");
   
@@ -68,37 +69,45 @@
 // this is where we'll write all our JavaScript code
 // remember, instead of using the default / && \ characters found on our keyboard
 // we'll be using these special unicode characters: ／ && ＼
+    
+  function setup() {
+    const mapHeight = Math.round(((Math.random()*0.5)+0.5)*20);
+    const mapWidth = Math.round(((Math.random()*0.5)+0.5)*20);
   
-  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*20);
-  const mapWidth = Math.round(((Math.random()*0.5)+0.5)*20);
+    const map = c => document.getElementById('map').innerText += c;
   
-  const map = c => document.getElementById('map').innerText += c;
-  
-  for (let row = 0; row <= mapHeight; row++) {
-    for (let column = 0; column <= mapWidth; column++) {
-      if (row === 0) {
-        if (column === mapWidth) {
-          map('■\n');
-        }
-        else {
-          map('■')
-        }
-      } else if (row === mapHeight){
-        map('■')
-      } else {
-        if (column === 0) {
-          map('■');
-        } else if (column === mapWidth) {
-          map('■\n');
-        } else {
-          map('▓')
-        }
+    for (let row = 0; row <= mapHeight; row++) {
+      for (let column = 0; column <= mapWidth; column++) {
+        if (row === 0) {
+          if (column === mapWidth) {
+            map('■\n');
+          } else {
+              map('■')
+            }
+          } else if (row === mapHeight) {
+              map('■')
+            } else {
+                if (column === 0) {
+                  map('■');
+                } else if (column === mapWidth) {
+                    map('■\n');
+                  } else {
+                      map('▓')
+                    }
+              }
       }
     }
   }
     
-  let direction = addEventListener.keyDown;
-  console.log(direction);
+  function draw() {
+    
+    
+  }
+  
+  nn.on('load', setup)
+  nn.on('load', draw)
+ 
+  
   
 </script>
 	</body>
