@@ -42,9 +42,6 @@
     background-color: #1c1c36;
     padding: 5px 10px 15px; 
     border-radius: 25% / 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 
   #playerContainer {
@@ -69,9 +66,12 @@
 // this is where we'll write all our JavaScript code
 // remember, instead of using the default / && \ characters found on our keyboard
 // we'll be using these special unicode characters: ／ && ＼
+  let player = document.getElementById('player');
+  let playerLeft = player.style.left;
+  let playerTop = player.style.top;
     
-  function setup() {
-    const mapHeight = Math.round(((Math.random()*0.5)+0.5)*20);
+    
+  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*20);
     const mapWidth = Math.round(((Math.random()*0.5)+0.5)*20);
   
     const map = c => document.getElementById('map').innerText += c;
@@ -97,17 +97,28 @@
               }
       }
     }
-  }
-    
-  function draw() {
     
     
-  }
+  document.body.addEventListener('keydown', function(event) 
+                                { 
+        const key = event.key; 
+        switch (key) { 
+            case "ArrowLeft": 
+                str = 'Left'; 
+                break; 
+            case "ArrowRight": 
+                str = 'Right'; 
+                break; 
+            case "ArrowUp": 
+                str = 'Up'; 
+                break; 
+            case "ArrowDown": 
+                str = 'Down'; 
+                break; 
+        } 
+    }); 
   
-  nn.on('load', setup)
-  nn.on('load', draw)
- 
-  
+
   
 </script>
 	</body>
