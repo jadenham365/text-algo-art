@@ -19,8 +19,6 @@
     position: absolute;
     height: 10000px;
     width: 10000px;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
   }
   
@@ -41,11 +39,15 @@
     background-color: #1c1c36;
     padding: 5px 10px 15px; 
     border-radius: 25% / 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
   }
 
   #playerContainer {
     z-index: 1;
+    top: 50%;
+    left: 50%;
   }
   
   
@@ -54,9 +56,9 @@
 	</head>
 	<body>
   <div class="container" id="playerContainer">
-    <div id="player" style="top: 50%; left: 50%"> ◕◞ ◕ </div>
+    <div id="player"> ◕◞ ◕ </div>
     </div>
-  <div class="container" id="mapContainer">
+  <div class="container" id="mapContainer" style="top: 50%; left: 50%">
     <div id="map"></div>
     </div>
   
@@ -68,8 +70,8 @@
 // we'll be using these special unicode characters: ／ && ＼
     
     
-  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*50);
-    const mapWidth = Math.round(((Math.random()*0.5)+0.5)*50);
+  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*30);
+    const mapWidth = Math.round(((Math.random()*0.5)+0.5)*30);
   
     const map = c => document.getElementById('map').innerText += c;
   
@@ -96,31 +98,38 @@
     }
     
     
-  document.addEventListener('keydown', function(event) 
-                                { 
-        event.preventDefault();
-        const key = event.key;
-        const player = document.getElementById('player')
-        let currentLeft = parseFloat(player.style.left);
-        let currentTop = parseFloat(player.style.top);
-        const step = 0.5;
-        switch (key) { 
-            case "ArrowLeft": 
+document.addEventListener('keydown', function(event) {
+    event.preventDefault();
+    const key = event.key;
+    const environment = document.getElementById('mapContainer');
+    let currentLeft = parseFloat(environment.style.left);
+    let currentTop = parseFloat(environment.style.top);
+    const step = 2;
+
+    function animate() {
+        switch (key) {
+            case "ArrowLeft":
+                currentLeft += step;
+                environment.style.left = currentLeft + '%';
+                break;
+            case "ArrowRight":
                 currentLeft -= step;
-                break; 
-            case "ArrowRight": 
-                currentLeft += step; 
-                break; 
-            case "ArrowUp": 
-                currentTop -= step;
-                break; 
-            case "ArrowDown": 
+                environment.style.left = currentLeft + '%';
+                break;
+            case "ArrowUp":
                 currentTop += step;
-                break; 
-        } 
-      player.style.left = currentLeft + '%';
-      player.style.top = currentTop + '%';
-    }); 
+                environment.style.top = currentTop + '%';
+                break;
+            case "ArrowDown":
+                currentTop -= step;
+                environment.style.top = currentTop + '%';
+                break;
+        }
+    }
+
+    requestAnimationFrame(animate);
+});
+
   
 
   
