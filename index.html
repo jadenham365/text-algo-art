@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title>NetNet's Adventure</title>
-<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap");
   
@@ -102,6 +101,7 @@
     
   document.body.addEventListener('keydown', function(event) 
                                 { 
+        event.preventDefault();
         const key = event.key;
         let currentLeft = parseFloat(playerLeft);
         let currentTop = parseFloat(playerTop);
