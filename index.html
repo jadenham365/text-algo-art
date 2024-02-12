@@ -66,13 +66,10 @@
 // this is where we'll write all our JavaScript code
 // remember, instead of using the default / && \ characters found on our keyboard
 // we'll be using these special unicode characters: ／ && ＼
-  let player = document.getElementById('player');
-  let playerLeft = player.style.left;
-  let playerTop = player.style.top;
     
     
-  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*20);
-    const mapWidth = Math.round(((Math.random()*0.5)+0.5)*20);
+  const mapHeight = Math.round(((Math.random()*0.5)+0.5)*50);
+    const mapWidth = Math.round(((Math.random()*0.5)+0.5)*50);
   
     const map = c => document.getElementById('map').innerText += c;
   
@@ -103,15 +100,16 @@
                                 { 
         event.preventDefault();
         const key = event.key;
-        let currentLeft = parseFloat(playerLeft);
-        let currentTop = parseFloat(playerTop);
-        const step = 1;
+        const player = document.getElementById('player')
+        let currentLeft = parseFloat(player.style.left);
+        let currentTop = parseFloat(player.style.top);
+        const step = 0.5;
         switch (key) { 
             case "ArrowLeft": 
-                currentLeft += step;
+                currentLeft -= step;
                 break; 
             case "ArrowRight": 
-                currentLeft -= step; 
+                currentLeft += step; 
                 break; 
             case "ArrowUp": 
                 currentTop -= step;
@@ -120,8 +118,8 @@
                 currentTop += step;
                 break; 
         } 
-      playerLeft = currentLeft + '%';
-      playerTop = currentTop + '%';
+      player.style.left = currentLeft + '%';
+      player.style.top = currentTop + '%';
     }); 
   
 
